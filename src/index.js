@@ -8,4 +8,4 @@ const movieAppend = async () => {
   render(movieCard);
 };
 
-movieAppend()
+movieAppend();
