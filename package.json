@@ -41,7 +41,9 @@
     "webpack-dev-server": "^4.7.2"
   },
   "dependencies": {
+    "clean-webpack-plugin": "^4.0.0",
     "gh-pages": "^3.2.3",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "mini-css-extract-plugin": "^2.6.0"
   }
 }
