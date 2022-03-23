@@ -1,6 +1,6 @@
 const appId = 'GkH7NaZUGpE0nkgYlAMb';
 const involvementApiUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appId}/likes/`;
-const container = document.querySelector('.moviecards-container');
+export const container = document.querySelector('.moviecards-container');
 
 // add a like to a movie
 export const addLike = async (itemId) => {

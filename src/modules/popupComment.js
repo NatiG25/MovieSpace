@@ -1,6 +1,9 @@
-const popup = document.createElement("section");
+import { container } from "./getLikes.js";
+import { getComment } from "./comment.js";
 
-popup.innerHTML = (
+const popup = document.createElement("section");
+const popupDisplay = () => {
+  popup.innerHTML = `
   <main class="popup-container">
     <i class="fa-solid fa-x"></i>
     <div class="popup-headTitle">
@@ -10,7 +13,7 @@ popup.innerHTML = (
     </div>
     
     <section>
-    <div class="displayComments"></div>
+    <div class="displayComments">${getComment()}</div>
     </section>
 
     <section>
@@ -18,14 +21,20 @@ popup.innerHTML = (
     <form class="form">
               <input class="user" type="text" placeholder="Enter your name" required/> <br/>
               <textarea class="comment" placeholder="Add your comment here" required></textarea> <br/>
-              <button class="submitBtn" type="submit">Comment</button>
+              <button class="submitBtn" type="submit">Submit</button>
               </form>
     </section>
   </main>
-);
+`;
+popup.style.display = ('block');
+container.prepend(popup);
+}
+
 
 document.addEventListener('click', (event) => {
   if (event.target.className === 'fa-x') {
     popup.style.display = "none";
   }
 })
+
+export default popupDisplay;
