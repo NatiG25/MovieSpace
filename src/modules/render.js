@@ -10,6 +10,7 @@ const render = (data) => {
   <div class="movieName">
       <h3 class="title">${e.name}</h3>
       <p class="likes"> <i class="fas fa-heart like" id="${e.id}"> <span class="num"> ${likes} </span> </i></p>
+      <button class="commentBtn" type="button">Comment</button>
   </div>`;
   });
 };

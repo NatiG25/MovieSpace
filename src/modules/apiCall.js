@@ -1,4 +1,4 @@
-const tvApiUrl = 'https://api.tvmaze.com/shows';
+export const tvApiUrl = 'https://api.tvmaze.com/shows';
 
 // fetch a movie
 const getMovies = async () => {
