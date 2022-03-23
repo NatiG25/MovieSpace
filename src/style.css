@@ -1,3 +1,38 @@
-#test {
-  color: red;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+:root {
+  font: "Poppins", sans-serif;
 }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ main {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 1%;  
+  margin: 1%;
+}
+
+
+.moviecards-container {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1%;
+  justify-content: center;
+    }
+    .imageTextContainer {
+      display: flex;
+      flex-direction: column;
+    } 
+
+    @media only screen and (max-width: 600px) {
+      body {
+        background-color: lightblue;
+      }
+    }
