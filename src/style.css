@@ -2,6 +2,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  background-color: aquamarine;
 }
 
 *,
@@ -12,11 +13,48 @@ body {
   box-sizing: border-box;
 }
 
-main {
+header {
   display: flex;
-  flex-wrap: wrap;
+  background-color: crimson;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 0 27% 0 38px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  background-color: crimson;
+  color: cornsilk;
+  padding: 1% 0 1% 8%;
+  gap: 100%;
+}
+
+.logo {
+  width: 80px;
+  height: 100%;
+}
+
+.movieTitle {
+  font-size: 1.4rem;
+  color: beige;
+}
+
+.counter {
+  font-size: 2rem;
+  color: green;
+}
+
+ul {
+  display: flex;
   flex-direction: row;
-  padding: 1%;
+  justify-content: space-evenly;
+  gap: 80%;
+}
+
+main {
+  padding: 5% 0 0 0;
   margin: 1%;
 }
 
@@ -35,5 +73,18 @@ main {
 @media only screen and (max-width: 600px) {
   body {
     background-color: lightblue;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: flex-end;
+    background-color: crimson;
+    color: cornsilk;
+    padding: 1% 0 1% 0%;
+    gap: 7%;
   }
 }

@@ -1,4 +1,5 @@
 import './style.css';
+import './modules/logo.png';
 
 import getMovies from './modules/apiCall.js';
 import render from './modules/render.js';
