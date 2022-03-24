@@ -1,6 +1,6 @@
 const popup = document.createElement('section');
 
-const fetchMovieComments = "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/DI7eKxNz4tMHOe3Yq2L5/comments/";
+const fetchMovieComments = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/DI7eKxNz4tMHOe3Yq2L5/comments/';
 
 const popupDisplay = async (data) => {
   document.body.addEventListener('click', (event) => {
@@ -9,7 +9,6 @@ const popupDisplay = async (data) => {
 
       data.forEach((item) => {
         if (item.id.toString() === commentId.toString()) {
-          
           popup.innerHTML += `
     <main class="popup-container">
     <span><i class="fas fa-times" alt='#'></i></span>
@@ -36,42 +35,41 @@ const popupDisplay = async (data) => {
           document.body.style.overflowY = 'hidden';
           popup.style.display = 'block';
           document.body.prepend(popup);
-          
         }
       });
 
       const submitBtn = document.querySelector('.submitBtn');
 
-// SEND COMMENT TO API
-const addComment = async (comment) => {
-  fetch(fetchMovieComments, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(comment),
-  });
-};
+      // SEND COMMENT TO API
+      const addComment = async (comment) => {
+        fetch(fetchMovieComments, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(comment),
+        });
+      };
 
-// GET USER INPUT
-const submitComment = (e) => {
-    e.preventDefault();
-    const user = document.querySelector('.user')
-    const text = document.querySelector('.comment')
+      // GET USER INPUT
+      const submitComment = (e) => {
+        e.preventDefault();
+        const user = document.querySelector('.user');
+        const text = document.querySelector('.comment');
 
-    const comment = {
-      username: user.value,
-      comment: text.value,
-      item_id: commentId
-    }
+        const comment = {
+          username: user.value,
+          comment: text.value,
+          item_id: commentId,
+        };
 
-    addComment(comment);
+        addComment(comment);
 
-    user.value = '';
-    text.value = '';
-};
+        user.value = '';
+        text.value = '';
+      };
 
-submitBtn.addEventListener('click', submitComment);
+      submitBtn.addEventListener('click', submitComment);
     }
   });
 };
