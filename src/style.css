@@ -70,6 +70,20 @@ main {
   flex-direction: column;
 }
 
+.popup-container {
+  background: #fff;
+  position: fixed;
+  opacity: 2;
+  top: 5%;
+  left: 2.5%;
+  overflow-y: scroll;
+  border: 1px solid #dfe1e6;
+  border-radius: 16px;
+  margin: 0 20px 40px 0;
+  padding: 16px;
+  height: 90vh;
+}
+
 @media only screen and (max-width: 600px) {
   body {
     background-color: lightblue;
