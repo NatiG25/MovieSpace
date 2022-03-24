@@ -17,6 +17,8 @@ const sendComment = async (itemId) => {
         }),
     };
 
+    username.value = ''
+
     try {
         const fetchRes = fetch(commentPOST, settings);
         const resPOST = await fetchRes.json();
