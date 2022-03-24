@@ -1,8 +1,5 @@
 import { sendComment } from './comment.js';
 
-const username = document.querySelector('.user');
-const commentArea = document.querySelector('.comment');
-
 const popup = document.createElement('section');
 const submitBtn = document.querySelector('.submitBtn');
 
@@ -63,4 +60,4 @@ const popupDisplay = async (data) => {
   });
 };
 
-export { popupDisplay, username, commentArea };
+export default popupDisplay;

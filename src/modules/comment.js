@@ -1,4 +1,5 @@
-import { username, commentArea } from './popupComments.js';
+const username = document.querySelector('.user');
+const commentArea = document.querySelector('.comment');
 
 const commentPOST = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/eI5R14OL1AS8fWw5Kmjy/comments';
 const commentGET = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/eI5R14OL1AS8fWw5Kmjy/comments?item_id=item1';
