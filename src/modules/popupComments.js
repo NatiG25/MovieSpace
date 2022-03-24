@@ -1,38 +1,6 @@
-
 const popup = document.createElement('section');
 
 const fetchMovieComments = "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/DI7eKxNz4tMHOe3Yq2L5/comments/";
-
-const getComment = async (movieId) => {
-    const response = await fetch(`${fetchMovieComments}?item_id=${movieId}`).catch((err) => err);
-    const resJSON = response.json();
-    return (resJSON);
-  };
-
-
-const addComment = async (movieId) => {
-  fetch(fetchMovieComments, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ 
-      item_id: movieId,
-      username: username.value,
-      comment: commentArea.value,
-    }),
-  });
-};
-
-const removePopup = () => {
-  document.addEventListener('click', (event) => {
-    if (event.target.className === 'fas') {
-      popup.style.display = 'none';
-      document.body.style.overflowY = ('none');
-    }
-  });
-};
-
 
 const popupDisplay = async (data) => {
   document.body.addEventListener('click', (event) => {
@@ -41,17 +9,6 @@ const popupDisplay = async (data) => {
 
       data.forEach((item) => {
         if (item.id.toString() === commentId.toString()) {
-          const submitComment = () => {
-            alert(1);
-            submitBtn.addEventListener('click', (e) => {
-              e.preventDefault();
-              const comment = {
-                user: username.value,
-                text: commentArea.value,
-              }
-          console.log(comment);
-            });
-          };
           
           popup.innerHTML += `
     <main class="popup-container">
@@ -66,12 +23,12 @@ const popupDisplay = async (data) => {
       <div class="displayComments"></div>
       </section>
   
-      <section>
+      <section class="comment-section">
       <h2>Add a comment</h2>
       <form class="form">
                 <input class="user" type="text" placeholder="Enter your name" required/> <br/>
-                <textarea class="comment" placeholder="Add your comment here" required></textarea> <br/>
-                <button onclick="submitComment()" id=${item.id} class="submitBtn" type="submit">Submit</button>
+                <input class="comment" type="text" placeholder="Add your comment here" required/> <br/>
+                <button id=${item.id} class="submitBtn" type="submit">Submit</button>
                 </form>
       </section>
     </main>
@@ -82,15 +39,41 @@ const popupDisplay = async (data) => {
           
         }
       });
-    }
+
+      const submitBtn = document.querySelector('.submitBtn');
+
+// SEND COMMENT TO API
+const addComment = async (comment) => {
+  fetch(fetchMovieComments, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(comment),
   });
 };
 
-const submitBtn = document.querySelector('.submitBtn');
-const username = document.querySelector('.user');
-const commentArea = document.querySelector('.comment');
-console.log(submitBtn);
+// GET USER INPUT
+const submitComment = (e) => {
+    e.preventDefault();
+    const user = document.querySelector('.user')
+    const text = document.querySelector('.comment')
 
+    const comment = {
+      username: user.value,
+      comment: text.value,
+      item_id: commentId
+    }
 
+    addComment(comment);
+
+    user.value = '';
+    text.value = '';
+};
+
+submitBtn.addEventListener('click', submitComment);
+    }
+  });
+};
 
 export default popupDisplay;
