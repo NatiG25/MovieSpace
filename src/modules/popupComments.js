@@ -30,11 +30,11 @@ const popupDisplay = async (data) => {
           popup.innerHTML += `
     <main class="popup-container">
     <span><i class="fas fa-times" alt='#'></i></span>
-      <div class="popup-headTitle">
-        <img src="${item.image.medium}" />
+        <img src="${item.image.original}" />
+
+        <div class="popup-headTitle">
         <h2>${item.name}</h2>
         <p>${item.summary}</p>
-      </div>
       
       <section class="displayAllComments">
         <ul class="comment-ul">
@@ -49,6 +49,7 @@ const popupDisplay = async (data) => {
                 <button id=${item.id} class="submitBtn" type="submit">Submit</button>
                 </form>
       </section>
+      </div>
     </main>
   `;
           document.body.style.overflowY = 'hidden';

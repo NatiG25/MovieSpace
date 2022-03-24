@@ -72,17 +72,46 @@ main {
 
 /* POPUP STYLES */
 .popup-container {
-  background: #fff;
+  background: #d7c49eff;
   position: fixed;
   opacity: 2;
   top: 5%;
   left: 2.5%;
-  overflow-y: scroll;
+  overflow-y: hidden;
   border: 1px solid #dfe1e6;
   border-radius: 16px;
-  margin: 0 20px 40px 0;
+  margin: 30px 20px 40px 0;
   padding: 16px;
   height: 90vh;
+  display: flex;
+}
+
+.fa-times {
+  display: flex;
+  position: fixed;
+  left: 95%;
+  font-size: 200%;
+}
+
+.popup-headTitle {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-left: 2%;
+}
+
+.popup-headTitle h2 {
+  padding-bottom: 10px;
+}
+
+.popup-headTitle img {
+  width: 40%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.displayAllComments {
+  overflow-y: auto;
 }
 
 .comment-section h2 {
@@ -104,18 +133,21 @@ main {
   border-radius: 8px;
 }
 
+.comment {
+  padding: 20px;
+}
+
 .comment-ul {
   flex-direction: column;
   list-style: none;
 }
 
 .comment-ul li {
-  background-color: wheat;
+  background-color: #343148ff;
   padding: 12px;
   border-radius: 8px;
   margin-top: 20px;
-  width: auto;
-  color: black;
+  color: white;
 }
 
 .submitBtn {
