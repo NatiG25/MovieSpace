@@ -1,7 +1,28 @@
-import { sendComment } from './comment.js';
 
 const popup = document.createElement('section');
-const submitBtn = document.querySelector('.submitBtn');
+
+const fetchMovieComments = "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/DI7eKxNz4tMHOe3Yq2L5/comments/";
+
+const getComment = async (movieId) => {
+    const response = await fetch(`${fetchMovieComments}?item_id=${movieId}`).catch((err) => err);
+    const resJSON = response.json();
+    return (resJSON);
+  };
+
+
+const addComment = async (movieId) => {
+  fetch(fetchMovieComments, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ 
+      item_id: movieId,
+      username: username.value,
+      comment: commentArea.value,
+    }),
+  });
+};
 
 const removePopup = () => {
   document.addEventListener('click', (event) => {
@@ -12,12 +33,6 @@ const removePopup = () => {
   });
 };
 
-const submitComment = () => {
-  submitBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    sendComment(e.id);
-  });
-};
 
 const popupDisplay = async (data) => {
   document.body.addEventListener('click', (event) => {
@@ -26,6 +41,18 @@ const popupDisplay = async (data) => {
 
       data.forEach((item) => {
         if (item.id.toString() === commentId.toString()) {
+          const submitComment = () => {
+            alert(1);
+            submitBtn.addEventListener('click', (e) => {
+              e.preventDefault();
+              const comment = {
+                user: username.value,
+                text: commentArea.value,
+              }
+          console.log(comment);
+            });
+          };
+          
           popup.innerHTML += `
     <main class="popup-container">
     <span><i class="fas fa-times" alt='#'></i></span>
@@ -44,7 +71,7 @@ const popupDisplay = async (data) => {
       <form class="form">
                 <input class="user" type="text" placeholder="Enter your name" required/> <br/>
                 <textarea class="comment" placeholder="Add your comment here" required></textarea> <br/>
-                <button id=${item.id} class="submitBtn" type="submit">Submit</button>
+                <button onclick="submitComment()" id=${item.id} class="submitBtn" type="submit">Submit</button>
                 </form>
       </section>
     </main>
@@ -52,12 +79,18 @@ const popupDisplay = async (data) => {
           document.body.style.overflowY = 'hidden';
           popup.style.display = 'block';
           document.body.prepend(popup);
-          removePopup();
-          submitComment();
+          
         }
       });
     }
   });
 };
+
+const submitBtn = document.querySelector('.submitBtn');
+const username = document.querySelector('.user');
+const commentArea = document.querySelector('.comment');
+console.log(submitBtn);
+
+
 
 export default popupDisplay;
