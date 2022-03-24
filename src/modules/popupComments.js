@@ -1,11 +1,29 @@
+import { addComment, getComment } from './commentAPI.js';
+
 const popup = document.createElement('section');
 
-const fetchMovieComments = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/DI7eKxNz4tMHOe3Yq2L5/comments/';
-
+// DISPLAY POPUP
 const popupDisplay = async (data) => {
   document.body.addEventListener('click', (event) => {
     if (event.target.className === 'commentBtn') {
       const commentId = event.target.parentNode.querySelector('button').id;
+
+      const displayComment = async (commentId) => {
+        const allComments = await getComment(commentId);
+
+        allComments.forEach((comment) => {
+          const template = document.createElement('template');
+          template.innerHTML += `
+          <li>
+          ${comment.creation_date} <br/> ${comment.username} : ${comment.comment}
+          </li>
+          `;
+          const ulComments = document.querySelector('.comment-ul');
+          ulComments.append(template.content);
+        });
+      };
+
+      displayComment(commentId);
 
       data.forEach((item) => {
         if (item.id.toString() === commentId.toString()) {
@@ -18,8 +36,9 @@ const popupDisplay = async (data) => {
         <p>${item.summary}</p>
       </div>
       
-      <section>
-      <div class="displayComments"></div>
+      <section class="displayAllComments">
+        <ul class="comment-ul">
+        </ul>
       </section>
   
       <section class="comment-section">
@@ -39,17 +58,6 @@ const popupDisplay = async (data) => {
       });
 
       const submitBtn = document.querySelector('.submitBtn');
-
-      // SEND COMMENT TO API
-      const addComment = async (comment) => {
-        fetch(fetchMovieComments, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(comment),
-        });
-      };
 
       // GET USER INPUT
       const submitComment = (e) => {
