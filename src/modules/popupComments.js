@@ -1,4 +1,5 @@
 import { addComment, getComment } from './commentAPI.js';
+import displayCommentCount from './commentCounter.js';
 
 const popup = document.createElement('section');
 
@@ -37,6 +38,7 @@ const popupDisplay = async (data) => {
         <p>${item.summary}</p>
       
       <section class="displayAllComments">
+      <h2>Comments(<span id="totalCommentCount"></span>)</h2>
         <ul class="comment-ul">
         </ul>
       </section>
@@ -52,13 +54,26 @@ const popupDisplay = async (data) => {
       </div>
     </main>
   `;
-          document.body.style.overflowY = 'hidden';
-          popup.style.display = 'block';
           document.body.prepend(popup);
+          popup.style.display = ('block');
+          document.body.overflowY = ('hidden');
+
+          const closeBtn = document.querySelector('.fa-times');
+          document.addEventListener('click', (event) => {
+            if (event.target === closeBtn) {
+              popup.style.display = 'none';
+              document.body.style.overflowY = ('auto');
+              window.location.reload();
+            }
+          });
         }
       });
 
       const submitBtn = document.querySelector('.submitBtn');
+
+      // DISPLAY COMMENT COUNT
+      const displayNumber = document.querySelector('#totalCommentCount');
+      displayCommentCount(commentId, displayNumber);
 
       // GET USER INPUT
       const submitComment = (e) => {

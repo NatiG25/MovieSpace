@@ -87,7 +87,6 @@ main {
 }
 
 .fa-times {
-  display: flex;
   position: fixed;
   left: 95%;
   font-size: 200%;
@@ -114,7 +113,8 @@ main {
   overflow-y: auto;
 }
 
-.comment-section h2 {
+.comment-section h2,
+.displayAllComments h2 {
   color: black;
   text-align: center;
   font-size: 20px;
