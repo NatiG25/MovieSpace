@@ -1,17 +1,19 @@
+import { username, commentArea } from "./popupComment.js";
+
 const commentPOST = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/eI5R14OL1AS8fWw5Kmjy/comments';
 const commentGET = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/eI5R14OL1AS8fWw5Kmjy/comments?item_id=item1'
 
 // Send data to API
-const sendComment = async () => {
+const sendComment = async (itemId) => {
     const settings = {
         method: 'POST',
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
         },
         body: JSON.stringify({
-            item_id: item1,
-            username: '',
-            comment: '',
+            item_id: itemId,
+            username: username.value,
+            comment: commentArea.value,
         }),
     };
 
