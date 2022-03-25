@@ -1,61 +1,99 @@
-import { sendComment } from './comment.js';
+import { addComment, getComment } from './commentAPI.js';
+import displayCommentCount from './commentCounter.js';
 
 const popup = document.createElement('section');
-const submitBtn = document.querySelector('.submitBtn');
 
-const removePopup = () => {
-  document.addEventListener('click', (event) => {
-    if (event.target.className === 'fas') {
-      popup.style.display = 'none';
-      document.body.style.overflowY = ('none');
-    }
-  });
-};
-
-const submitComment = () => {
-  submitBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    sendComment(e.id);
-  });
-};
-
+// DISPLAY POPUP
 const popupDisplay = async (data) => {
   document.body.addEventListener('click', (event) => {
     if (event.target.className === 'commentBtn') {
       const commentId = event.target.parentNode.querySelector('button').id;
+
+      const displayComment = async (commentId) => {
+        const allComments = await getComment(commentId);
+
+        allComments.forEach((comment) => {
+          const template = document.createElement('template');
+          template.innerHTML += `
+          <li>
+          ${comment.creation_date} <br/> ${comment.username} : ${comment.comment}
+          </li>
+          `;
+          const ulComments = document.querySelector('.comment-ul');
+          ulComments.append(template.content);
+        });
+      };
+
+      displayComment(commentId);
 
       data.forEach((item) => {
         if (item.id.toString() === commentId.toString()) {
           popup.innerHTML += `
     <main class="popup-container">
     <span><i class="fas fa-times" alt='#'></i></span>
-      <div class="popup-headTitle">
-        <img src="${item.image.medium}" />
+        <img src="${item.image.original}" />
+
+        <div class="popup-headTitle">
         <h2>${item.name}</h2>
         <p>${item.summary}</p>
-      </div>
       
-      <section>
-      <div class="displayComments"></div>
+      <section class="displayAllComments">
+      <h2>Comments(<span id="totalCommentCount"></span>)</h2>
+        <ul class="comment-ul">
+        </ul>
       </section>
   
-      <section>
+      <section class="comment-section">
       <h2>Add a comment</h2>
       <form class="form">
                 <input class="user" type="text" placeholder="Enter your name" required/> <br/>
-                <textarea class="comment" placeholder="Add your comment here" required></textarea> <br/>
+                <input class="comment" type="text" placeholder="Add your comment here" required/> <br/>
                 <button id=${item.id} class="submitBtn" type="submit">Submit</button>
                 </form>
       </section>
+      </div>
     </main>
   `;
-          document.body.style.overflowY = 'hidden';
-          popup.style.display = 'block';
           document.body.prepend(popup);
-          removePopup();
-          submitComment();
+          popup.style.display = ('block');
+          document.body.overflowY = ('hidden');
+
+          const closeBtn = document.querySelector('.fa-times');
+          document.addEventListener('click', (event) => {
+            if (event.target === closeBtn) {
+              popup.style.display = 'none';
+              document.body.style.overflowY = ('auto');
+              window.location.reload();
+            }
+          });
         }
       });
+
+      const submitBtn = document.querySelector('.submitBtn');
+
+      // DISPLAY COMMENT COUNT
+      const displayNumber = document.querySelector('#totalCommentCount');
+      displayCommentCount(commentId, displayNumber);
+
+      // GET USER INPUT
+      const submitComment = (e) => {
+        e.preventDefault();
+        const user = document.querySelector('.user');
+        const text = document.querySelector('.comment');
+
+        const comment = {
+          username: user.value,
+          comment: text.value,
+          item_id: commentId,
+        };
+
+        addComment(comment);
+
+        user.value = '';
+        text.value = '';
+      };
+
+      submitBtn.addEventListener('click', submitComment);
     }
   });
 };
