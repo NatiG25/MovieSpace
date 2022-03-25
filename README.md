@@ -2,7 +2,7 @@
 
 # JS Capstone Project
 
-> Kanban setup
+> This JavaScript capstone project is about building a web application based on an external API. We selected an API that provides data about a topic that we liked and then built the webapp around it. The webapp has 2 user interfaces. 
 
 ## Built With
 
@@ -12,6 +12,7 @@
 - VScode
 - Webpack
 - API
+- Jest
 
 ## Getting Started
 
@@ -29,6 +30,10 @@ Run `npm start` for development. Run `npm run build` for production.
 - Run `npx stylelint "**/*.{css,scss}"` for CSS check
 - Run `npx stylelint "**/*.{css,scss}" --fix` to fix CSS errors if found.
 
+## Video Presention
+
+[Video Link]()
+
 ## Live Demo
 
 [Live Demo Link]()
@@ -38,14 +43,14 @@ Run `npm start` for development. Run `npm run build` for production.
 👤 **Author1**
 
 - GitHub: [@NatiG25](https://github.com/NatiG25)
-- Twitter: [@NatiG87702270](https://twitter.com/NatiG87702270)
+- Twitter: [@NatiG](https://twitter.com/NatiG87702270)
 - LinkedIn: [@Temesgen G/gorgis](https://linkedin.com/in/temesgen-g-gorgis-0910a6229 )
 
 👤 **Author2**
 
-- GitHub: [@NatiG25](https://github.com/NatiG25)
-- Twitter: [@NatiG87702270](https://twitter.com/NatiG87702270)
-- LinkedIn: [@Temesgen G/gorgis](https://linkedin.com/in/temesgen-g-gorgis-0910a6229 )
+- GitHub: [@Mutalenic](https://github.com/Mutalenic)
+- Twitter: [@nicomutale](https://twitter.com/nicomutale)
+- LinkedIn: [@nicomutale](https://www.linkedin.com/nicholas-mutale-715714124 )
 
 ## 🤝 Contributing
 

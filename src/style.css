@@ -50,9 +50,28 @@ header {
 
 ul {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
   gap: 80%;
+}
+
+.movieName h3,
+.movieName p {
+  display: flex;
+  justify-content: center;
+}
+
+.movieName p {
+  cursor: pointer;
+}
+
+.commentBtn {
+  padding: 10px;
+  margin: 5% 34%;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 3px 3px 8px 1px rgb(0 0 0 / 35%);
+  justify-items: center;
 }
 
 main {
@@ -79,6 +98,7 @@ main {
   opacity: 2;
   top: 5%;
   left: 2.5%;
+  left: 12.5%;
   overflow-y: hidden;
   border: 1px solid #dfe1e6;
   border-radius: 16px;
@@ -86,12 +106,14 @@ main {
   padding: 16px;
   height: 90vh;
   display: flex;
+  width: 75%;
 }
 
 .fa-times {
   position: fixed;
-  left: 95%;
+  left: 85%;
   font-size: 200%;
+  cursor: pointer;
 }
 
 .popup-headTitle {
@@ -142,6 +164,11 @@ main {
 .comment-ul {
   flex-direction: column;
   list-style: none;
+}
+
+.userInput {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .comment-ul li {
