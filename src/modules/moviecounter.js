@@ -1,8 +1,7 @@
 import getMovies from './apiCall.js';
+import moviescount from './count.js';
 
-const moviescount = (list) => list.length;
 const displayNumber = document.getElementById('totalMovieCount');
-
 const displaymoviescount = async () => {
   const movies = await getMovies();
   displayNumber.textContent = `(${moviescount(movies)})`;
