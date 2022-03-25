@@ -9,23 +9,6 @@ const popupDisplay = async (data) => {
     if (event.target.className === 'commentBtn') {
       const commentId = event.target.parentNode.querySelector('button').id;
 
-      const displayComment = async (commentId) => {
-        const allComments = await getComment(commentId);
-
-        allComments.forEach((comment) => {
-          const template = document.createElement('template');
-          template.innerHTML += `
-          <li>
-          ${comment.creation_date} <br/> ${comment.username} : ${comment.comment}
-          </li>
-          `;
-          const ulComments = document.querySelector('.comment-ul');
-          ulComments.append(template.content);
-        });
-      };
-
-      displayComment(commentId);
-
       data.forEach((item) => {
         if (item.id.toString() === commentId.toString()) {
           popup.innerHTML += `
@@ -70,16 +53,33 @@ const popupDisplay = async (data) => {
       });
 
       const submitBtn = document.querySelector('.submitBtn');
+      const ulComments = document.querySelector('.comment-ul');
+      const template = document.createElement('template');
+      const user = document.querySelector('.user');
+      const text = document.querySelector('.comment');
+
+      // DISPLAY ALL COMMENTS
+      const displayComment = async (commentId) => {
+        const allComments = await getComment(commentId);
+
+        allComments.forEach((comment) => {
+          template.innerHTML += `
+          <li>
+          ${comment.creation_date} <br/> ${comment.username} : ${comment.comment}
+          </li>
+          `;
+          ulComments.append(template.content);
+        });
+      };
+
+      displayComment(commentId);
 
       // DISPLAY COMMENT COUNT
       const displayNumber = document.querySelector('#totalCommentCount');
       displayCommentCount(commentId, displayNumber);
 
       // GET USER INPUT
-      const submitComment = (e) => {
-        e.preventDefault();
-        const user = document.querySelector('.user');
-        const text = document.querySelector('.comment');
+      const submitComment = () => {
 
         const comment = {
           username: user.value,
@@ -88,12 +88,33 @@ const popupDisplay = async (data) => {
         };
 
         addComment(comment);
+      };
+
+      // UPDATE COMMENTS
+      const updateComments = () => {
+        const li = document.createElement('li')
+        const date = new Date();
+        const day = date.getDay();
+        const month = date.getMonth();
+        const year =  date.getFullYear();
+          li.innerHTML += `
+          <li class="userInput">
+          ${year} ${-month} ${-day} </br> ${user.value} : ${text.value}
+          </li>
+          `;
+          ulComments.append(li);
+      };
+
+      submitBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        submitComment();
+        updateComments();
+        displayCommentCount(commentId, displayNumber);
 
         user.value = '';
         text.value = '';
-      };
+      });
 
-      submitBtn.addEventListener('click', submitComment);
     }
   });
 };
