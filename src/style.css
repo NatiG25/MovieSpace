@@ -20,7 +20,7 @@ header {
   justify-content: space-evenly;
   width: 100%;
   top: 0;
-  padding-right:41%;
+  padding-right: 41%;
 }
 
 .header-content {
@@ -179,7 +179,6 @@ footer {
 .movie-count {
   display: flex;
 }
-
 
 @media only screen and (max-width: 600px) {
   body {
