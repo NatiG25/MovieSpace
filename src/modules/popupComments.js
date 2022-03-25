@@ -1,5 +1,5 @@
 import { addComment, getComment } from './commentAPI.js';
-import displayCommentCount from './commentCounter.js';
+import { displayCommentCount } from './commentCounter.js';
 
 const popup = document.createElement('section');
 
@@ -39,7 +39,7 @@ const popupDisplay = async (data) => {
   `;
           document.body.prepend(popup);
           popup.style.display = ('block');
-          document.body.overflowY = ('hidden');
+          document.body.style.overflowY = ('hidden');
 
           const closeBtn = document.querySelector('.fa-times');
           document.addEventListener('click', (event) => {
@@ -80,7 +80,6 @@ const popupDisplay = async (data) => {
 
       // GET USER INPUT
       const submitComment = () => {
-
         const comment = {
           username: user.value,
           comment: text.value,
@@ -92,17 +91,17 @@ const popupDisplay = async (data) => {
 
       // UPDATE COMMENTS
       const updateComments = () => {
-        const li = document.createElement('li')
+        const li = document.createElement('li');
         const date = new Date();
         const day = date.getDay();
         const month = date.getMonth();
-        const year =  date.getFullYear();
-          li.innerHTML += `
+        const year = date.getFullYear();
+        li.innerHTML += `
           <li class="userInput">
           ${year} ${-month} ${-day} </br> ${user.value} : ${text.value}
           </li>
           `;
-          ulComments.append(li);
+        ulComments.append(li);
       };
 
       submitBtn.addEventListener('click', (e) => {
@@ -114,7 +113,6 @@ const popupDisplay = async (data) => {
         user.value = '';
         text.value = '';
       });
-
     }
   });
 };

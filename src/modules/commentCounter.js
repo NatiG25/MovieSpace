@@ -7,4 +7,4 @@ const displayCommentCount = async (commentId, displayNumber) => {
   if (countComments(comments)) displayNumber.innerHTML = (`${countComments(comments)}`);
 };
 
-export default displayCommentCount;
+export { displayCommentCount, countComments };
