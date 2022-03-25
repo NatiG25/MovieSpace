@@ -86,6 +86,10 @@ main {
   justify-content: center;
 }
 
+.fas {
+  color: red;
+}
+
 .imageTextContainer {
   display: flex;
   flex-direction: column;
