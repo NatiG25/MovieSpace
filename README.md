@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# JS Capstone Project
+# MovieSpace
 
 > This JavaScript capstone project is about building a web application based on an external API. We selected an API that provides data about a topic that we liked and then built the webapp around it. The webapp has 2 user interfaces. 
 
