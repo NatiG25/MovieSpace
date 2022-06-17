@@ -4,8 +4,9 @@
 
 > This JavaScript capstone project is about building a web application based on an external API. We selected an API that provides data about a topic that we liked and then built the webapp around it. The webapp has 2 user interfaces. 
 
-![Screenshot from 2022-03-25 19-44-49](https://user-images.githubusercontent.com/86069740/160164549-aaea1436-02ae-4965-bd26-dc45e4bd27fb.png)
-![Screenshot from 2022-03-25 19-45-02](https://user-images.githubusercontent.com/86069740/160164584-33992153-5c39-46af-a2c0-0f0c8b7c8254.png)
+![Screenshot from 2022-06-17 17-41-09](https://user-images.githubusercontent.com/86069740/174320993-861cd519-f534-4167-9a12-bd02e368c614.png)
+
+![Screenshot from 2022-06-17 17-41-27](https://user-images.githubusercontent.com/86069740/174320978-eba3420f-0a98-4c6b-96ff-0e425463de02.png)
 
 ## Built With
 
@@ -39,7 +40,7 @@ Run `npm start` for development. Run `npm run build` for production.
 
 ## Live Demo
 
-[Live Demo Link](https://natig25.github.io/JS-capstone/)
+[Live Demo Link](https://natig25.github.io/MovieSpace/)
 
 ## Authors
 
