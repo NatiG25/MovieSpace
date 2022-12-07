@@ -20,7 +20,7 @@
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.For SSH:`git@github.com:NatiG25/JS-capstone.git`For https:`https://github.com/NatiG25/JS-capstone.git`
+To get a local copy up and running follow these simple example steps.For SSH:`git@github.com:NatiG25/MovieSpace.git`For https:`https://natig25.github.io/MovieSpace/`
 
 ### Install
 Run `npm install` after cloning the repo.
@@ -47,8 +47,8 @@ Run `npm start` for development. Run `npm run build` for production.
 👤 **Author1**
 
 - GitHub: [@NatiG25](https://github.com/NatiG25)
-- Twitter: [@NatiG](https://twitter.com/NatiG87702270)
-- LinkedIn: [@Temesgen G/gorgis](https://linkedin.com/in/temesgen-g-gorgis-0910a6229 )
+- Twitter: [@NatiG255](https://twitter.com/NatiG255)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/natigebregorgis/)
 
 👤 **Author2**
 
