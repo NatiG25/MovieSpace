@@ -2,7 +2,7 @@
 
 # MovieSpace
 
-> This JavaScript capstone project is about building a web application based on an external API. We selected an API that provides data about a topic that we liked and then built the webapp around it. The webapp has 2 user interfaces. 
+> This web application is based on an external API. We selected an API that provides data about top rated movies and then built a web-app around it. The web-app has two user interfaces.
 
 ![Screenshot from 2022-06-17 17-41-09](https://user-images.githubusercontent.com/86069740/174320993-861cd519-f534-4167-9a12-bd02e368c614.png)
 
